@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.historialmedico.serviciosrest.service;
 
 import com.example.historialmedico.serviciosrest.Hijo;
@@ -6,8 +11,6 @@ import com.example.historialmedico.serviciosrest.Vacuna;
 import com.example.historialmedico.serviciosrest.dto.HijoDTO;
 import com.example.historialmedico.serviciosrest.dto.UsuarioDTO;
 import com.example.historialmedico.serviciosrest.dto.VacunaDTO;
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -18,7 +21,6 @@ import javax.ws.rs.core.Response;
  * @author jorge
  */
 public abstract class AbstractFacade<T> {
-
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
@@ -65,8 +67,8 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-
-    public Response validarUsuario(String correo) {
+    
+        public Response validarUsuario(String correo) {
 
         Usuario usuario = (Usuario) getEntityManager().createNamedQuery("Usuario.findByCorreo")
                 .setParameter("correo", correo)
@@ -122,12 +124,12 @@ public abstract class AbstractFacade<T> {
                 VacunaDTO vacunaDTO = new VacunaDTO();
                 vacunaDTO.setNombre(vacuna.getNombre());
                 vacunaDTO.setAplicada(vacuna.getAplicada());
-                vacunaDTO.setFecha(vacuna.getFecha());
+                vacunaDTO.setFecha(vacuna.getFecha().toString());
                 vacunaDTOList.add(vacunaDTO);
             }
         }
 
         return vacunaDTOList;
     }
-
+    
 }

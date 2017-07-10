@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.historialmedico.serviciosrest.service;
 
 import com.example.historialmedico.serviciosrest.Vacuna;
@@ -78,7 +83,7 @@ public class VacunaFacadeREST extends AbstractFacade<Vacuna> {
         return String.valueOf(super.count());
     }
     
-    @GET
+        @GET
     @Path("obtener/{idHijo}/{order}")
     @Produces({MediaType.APPLICATION_JSON})
     public List<VacunaDTO> obtenerVacunas(@PathParam("idHijo") String idHijo, @PathParam("order") String order) {

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.historialmedico.serviciosrest.service;
 
 import com.example.historialmedico.serviciosrest.Hijo;
@@ -23,7 +28,6 @@ import javax.ws.rs.core.MediaType;
 @Stateless
 @Path("hijo")
 public class HijoFacadeREST extends AbstractFacade<Hijo> {
-
     @PersistenceContext(unitName = "com.example.historialmedico_ServiciosRest_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -78,17 +82,18 @@ public class HijoFacadeREST extends AbstractFacade<Hijo> {
     public String countREST() {
         return String.valueOf(super.count());
     }
-
+    
     @GET
     @Path("obtener/{idPadre}")
     @Produces({MediaType.APPLICATION_JSON})
     public List<HijoDTO> obtenerHijos(@PathParam("idPadre") String idPadre) {
         return super.obtenerHijos(idPadre);
     }
+    
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
 }

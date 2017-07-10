@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.example.historialmedico.serviciosrest.service;
 
 import com.example.historialmedico.serviciosrest.Usuario;
-import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,7 +28,6 @@ import javax.ws.rs.core.Response;
 @Stateless
 @Path("usuario")
 public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
-
     @PersistenceContext(unitName = "com.example.historialmedico_ServiciosRest_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -79,12 +82,7 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     public String countREST() {
         return String.valueOf(super.count());
     }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
+        
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("validarUsuario")
@@ -93,4 +91,9 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
         return super.validarUsuario(correo);
     }
 
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+    
 }
