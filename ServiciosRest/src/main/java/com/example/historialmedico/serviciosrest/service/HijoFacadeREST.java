@@ -1,7 +1,7 @@
 package com.example.historialmedico.serviciosrest.service;
 
 import com.example.historialmedico.serviciosrest.Hijo;
-import com.example.historialmedico.serviciosrest.dto.HijoDto;
+import com.example.historialmedico.serviciosrest.dto.HijoDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -82,7 +82,7 @@ public class HijoFacadeREST extends AbstractFacade<Hijo> {
     @GET
     @Path("obtener/{idPadre}")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<HijoDto> obtenerHijos(@PathParam("idPadre") String idPadre) {
+    public List<HijoDTO> obtenerHijos(@PathParam("idPadre") String idPadre) {
         return super.obtenerHijos(idPadre);
     }
 

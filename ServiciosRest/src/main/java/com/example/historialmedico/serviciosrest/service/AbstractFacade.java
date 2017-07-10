@@ -3,7 +3,7 @@ package com.example.historialmedico.serviciosrest.service;
 import com.example.historialmedico.serviciosrest.Hijo;
 import com.example.historialmedico.serviciosrest.Usuario;
 import com.example.historialmedico.serviciosrest.Vacuna;
-import com.example.historialmedico.serviciosrest.dto.HijoDto;
+import com.example.historialmedico.serviciosrest.dto.HijoDTO;
 import com.example.historialmedico.serviciosrest.dto.UsuarioDTO;
 import com.example.historialmedico.serviciosrest.dto.VacunaDTO;
 import java.io.IOException;
@@ -87,17 +87,17 @@ public abstract class AbstractFacade<T> {
         return Response.ok(usuarioDTO).build();
     }
 
-    public List<HijoDto> obtenerHijos(String idPadre) {
+    public List<HijoDTO> obtenerHijos(String idPadre) {
 
         String query = "SELECT c.* FROM hijo c WHERE c.id_padre = " + idPadre;
 
         List<Hijo> hijosList = (List<Hijo>) getEntityManager().createNativeQuery(query, Hijo.class).getResultList();
 
-        List<HijoDto> hijoDtoList = null;
+        List<HijoDTO> hijoDtoList = null;
         if (hijosList != null) {
             hijoDtoList = new ArrayList<>();
             for (Hijo hijo : hijosList) {
-                HijoDto hijoDto = new HijoDto();
+                HijoDTO hijoDto = new HijoDTO();
                 hijoDto.setId(hijo.getId());
                 hijoDto.setIdPadre(hijo.getIdPadre().getId());
                 hijoDto.setNombre(hijo.getNombre());
@@ -111,7 +111,7 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<VacunaDTO> obtenerVacunas(String idHijo, String order) {
-        String query = "SELECT c.* FROM vacuna c WHERE c.id_hijo = " + idHijo + "ORDER BY "+order+" asc";
+        String query = "SELECT c.* FROM vacuna c WHERE c.id_hijo = " + idHijo + " ORDER BY "+order+" asc";
 
         List<Vacuna> vacunaList = (List<Vacuna>) getEntityManager().createNativeQuery(query, Vacuna.class).getResultList();
 

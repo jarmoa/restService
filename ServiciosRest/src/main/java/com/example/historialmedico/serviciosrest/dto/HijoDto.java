@@ -1,10 +1,12 @@
 package com.example.historialmedico.serviciosrest.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jorge
  */
-public class HijoDto {
+public class HijoDTO implements Serializable{
 
     private Integer id;
 
